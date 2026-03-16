@@ -1,778 +1,90 @@
-sas<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Millionaire(ミオラーレ)</title>
+    <title>tora2006 | Web Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<style>
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: sans-serif;
-        color: #333333;
-    }
-    .navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 68px;
-        padding: 0 40px;
-        background-color: rgba(255, 255, 255, 0.97);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-        z-index: 100;
-    }
-
-    .logo {
-        font-size: 20px;
-        font-weight: 900;
-        color: #2d6a4f;
-        letter-spacing: 3px;
-    }
-
-    .logo span {
-        font-size: 11px;
-        font-weight: 400;
-        color: #888888;
-        letter-spacing: 2px;
-        display: block;
-        margin-top: 2px;
-    }
-
-    .nav-links {
-        list-style: none;
-        display: flex;
-        gap: 32px;
-    }
-    .nav-links a {
-        text-decoration: none;
-        color: #555555;
-        font-size: 13px;
-        letter-spacing: 1px;
-        transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-        color: #2d6a4f;
-    }
-
-    .nav-btn {
-        background-color: #2d6a4f;
-        color: #FFFFFF !important;
-        padding: 10px 24px;
-        border-radius: 100px;
-        font-weight: 700 !important;
-        transition: background-color 0.2 !important;
-    }
-
-    .nav-btn:hover {
-        background-color: #1b4332 !important;
-        color: #ffffff !important;
-    }
-
-    .hero {
-        height: 100vh;
-        background-color: #f0f7f4;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 0 20px;
-    }
-
-    .hero-inner {
-        max-width: 700px;
-    }
-
-    .hero-label {
-        display: inline-block;
-        background-color: #d8f0e8;
-        color: #2d6a4f;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 3px;
-        padding: 6px 20px;
-        border-radius: 100px;
-        margin-bottom: 28px;
-    }
-
-    .hero-title {
-        font-size: 56px;
-        font-weight: 900;
-        color: #1a1a1a;
-        line-height:  1.3;
-        margin-bottom: 20px;
-        letter-spacing:  2px;
-    }
-
-    .hero-title span {
-        color: #2d6a4f;
-    }
-
-    .hero-text {
-        font-size: 16px;
-        color: #666666;
-        line-height: 1.9;
-        margin-bottom: 40px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .btn-primary {
-            display:inline-block;
-            background-color: #2d6a4f;
-            color: #FFFFFF;
-            font-size: 15px;
-            font-weight: 700;
-            padding: 16px 40px;
-            border-radius: 100px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #1b4332;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(45, 106, 79, 0 0.3);
-        }
-
-        .btn-secondary {
-            display: inline-block;
-            background-color: transparent;
-            color: #2d6a4f;
-            font-size: 15px;
-            font-weight: 700;
-            padding: 16px 40px;
-            border-radius: 100px;
-            text-decoration: none;
-            border: 2px solid #2d6a4f;
-            transition: all 0.3s ease;
-            }
-
-        .btn-secondary:hover {
-                background-color: #2d6a4f;
-                color: #ffffff;
-            }
-
-        .section-label {
-            display:  inline-block;
-            background-color: #d8f0e8;
-            color: #2d6a4f;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 3px;
-            padding: 6px 20px;
-            border-radius: 100px;
-            margin-bottom: 16px;
-        }    
-
-        .section-title {
-            font-size: 36px;
-            font-weight: 900;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-
-        .section-text {
-            font-size: 15px;
-            color: #666666;
-            line-height: 1.8;
-            margin-bottom: 48px;
-        }
-
-        .symptoms {
-            padding: 80px 40px;
-            background-color: #ffffff;
-            text-align: center;
-        }
-
-        .symptom-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            max-width: 800px;
-            margin: 0 auto 48px;
-            justify-content: center;
-        }
-
-        .symptom-item {
-            background-color: #f0f7f4;
-            border: 2px solid #d8f0e8;
-            border-radius: 100px;
-            padding: 12px 28px;
-            font-size: 15px;
-            font-weight: 700;
-            color: #2d6a4f
-        }
-
-        .symptom-note {
-            background-color: #f0f7f4;
-            border-radius: 16px;
-            padding: 32px 40px;
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 15px;
-            color: #444444;
-            line-height: 1.9;
-        }
-
-        .symptom-note strong {
-            color: #2d6a4f;
-            font-size: 18px;
-        }
-
-        .treatment {
-            padding: 80px 40px;
-            background-color: #f8faf9;
-            text-align: center;
-        }
-
-        .treatment-cards {
-            display: flex;
-            gap: 24px;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-
-        .treatment-card {
-            flex: 1;
-            background-color: #ffffff;
-            border-radius: 20px;
-            padding: 40px 28px;
-            text-align: center;
-            box-shadow: 0 4px 28px rgba(0, 0, 0, 0.06);
-            transition: all 0.3s ease;
-            border-top: 4px solid #2d6a4f;
-        }
-
-        .treatment-card:hover {
-            transform:  translateY(-6px);
-            box-shadow: 0 16px 40px rgba(45, 106, 79, 0.15);
-        }
-
-        .treatment-icon {
-            font-size: 44px;
-            margin-bottom: 20px;
-        }
-
-        .treatment-name {
-            font-size: 20px;
-            font-weight: 900;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-        }
-
-        .treatment-desc {
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .treatment-time {
-            font-size: 13px;
-            color: #2d6a4f;
-            font-weight: 700;
-            background-color: #d8f0e8;
-            padding: 6px 16px;
-            border-radius: 100px;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-
-        .treatment-price {
-            font-size: 22px;
-            font-weight: 900;
-            color: #2d6a4f;
-            margin-top: 8px;
-        }
-
-        .reasons {
-            padding: 80px 40px;
-            background-color: #ffffff;
-            text-align: center;
-        }
-
-        .reason-grid {
-            display: flex;
-            gap: 32px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .reason-item {
-            flex: 1;
-            padding: 40px 24px;
-            border-radius: 20px;
-            background-color: #f0f7f4;
-            transition: all 0.3s ease;
-        }
-
-        .reason-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(45, 106, 79, 0.12);
-        }
-
-        .reason-number {
-            font-size: 36px;
-            font-weight: 900;
-            color:#d8f0e8;
-            margin-bottom: 12px;
-            letter-spacing: 2px;
-        }
-
-        .reason-title {
-            font-size: 18px;
-            font-weight: 900;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .reason-text {
-            font-size: 14px;
-            color: #666666;
-            line-height: 1.8;
-        }
-
-        .flow {
-            padding: 80px 40px;
-            background-color:  #f0f7f4;
-            text-align: center;
-        }
-
-        .flow-steps {
-            max-width: 680px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .flow-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
-            text-align: left;
-            position: relative;
-            padding-bottom: 40px;
-    }
-
-    .flow-step:last-child {
-        padding-bottom: 0;
-    }
-
-    .flow-left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex-shrink: 0;
-    }
-
-    .flow-num {
-        width: 48px;
-        height: 48px;
-        background-color: #2d6a4f;
-        color: #ffffff;
-        font-size: 18px;
-        font-weight: 900;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .flow-line {
-        width: 2px;
-        flex: 1;
-        background-color: #b7dfc8;
-        margin-top: 8px;
-        min-height: 40px;
-    }
-
-    .flow-step-:last-child .flow-line {
-        display: none;
-    }
-
-    .flow-content {
-        padding-top: 10px;
-    }
-
-    .flow-title {
-        font-size: 18px;
-        font-weight: 900;
-        color: #1a1a1a;
-        margin-bottom: 8px;
-    }
-
-    .flow-text {
-        font-size: 14px;
-        color: #666666;
-        line-height: 1.8;
-    }
-
-    .faq {
-        padding: 80px 40px;
-        background-color: #ffffff;
-        text-align: center;
-    }
-
-    .faq-list {
-        max-width: 720px;
-        margin:  0 auto;
-        text-align:  left;
-    }
-
-    .faq-item {
-        border-bottom: 1px solid #e8f4ee;
-        padding: 28px 0;
-    }
-
-    .faq-item:first-child {
-        border-top: 1px solid #e8f4ee;
-    }
-    .faq-q {
-        font-size: 16px;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 12px;
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-    }
-
-    .faq-q:before {
-        content: "Q";
-        color: #2d6a4f;
-        font-size: 18px;
-        font-weight: 900;
-        flex-shrink: 0;
-    }
-
-    .faq-a{
-        font-size: 14px;
-        color: #666666;
-        line-height: 1.8;
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-    }
-
-    .faq-a::before {
-    content: "A";
-    color: #a07850;
-    font-size: 18px;
-    font-weight: 900;
-    flex-shrink: 0;
-    }
-
-    .access {
-        padding: 80px 40px;
-        background-color: #2d6a4f;
-        text-align: center;
-    }
-    
-    .access .section-label {
-        background-color: rgba(255, 255, 255, 0.2);
-        color: #ffffff;
-    }
-
-    .access .section-title {
-        color:#ffffff;
-    }
-
-    .access .section-text {
-        color: rgba(255, 255, 255, 0.7);
-    }
-
-    .access-grid {
-        display: flex;
-        gap: 48px;
-        max-width: 720px;
-        margin: 0 auto;
-        justify-content:  center;
-    }
-    
-    .access-item {
-        text-align: center;
-    }
-
-    .access-label {
-        font-size: 11px;
-        letter-spacing: 3px;
-        color: rgba(255, 255, 255, 0.6);
-        margin-bottom: 10px;
-        font-weight: 700;
-    }
-
-    .access-text {
-        font-size: 16px;
-        color: #ffffff;
-        line-height: 1.9;
-    }
-
-    footer {
-        background-color: #1d4332;
-        padding: 28px;
-        text-align: center;
-    }
-
-    .footer-text {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.4);
-        letter-spacing: 2px;
-    }
-
- 
-</style>
-
-
 <body>
-    <nav  class="navbar">
-        <div class="logo">
-            MIGLIORARE
-            <span>ミリオラーレ整体院</span>
+
+    <header class="header">
+        <div class="header-inner">
+            <p class="logo">tora2006</p>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#works">Works</a>
+            </nav>
         </div>
-        <ul class="nav-links">
-            <li><a href="#">症状</a></li>
-            <li><a href="#">メニュー</a></li>
-            <li><a href="#">施術の流れ</a></li>
-            <li><a href="#">アクセス</a></li>
-            <li><a class="nav-btn" href="#">予約する</a></li>
-        </ul>
-    </nav>
+    </header>
+
     <section class="hero">
         <div class="hero-inner">
-            <span class="hero-label">整体院　MIGLIORARE</span>
-            <h1 class="hero-title">
-                その痛み、<br>
-                <span>改善します。</span>
-            </h1>
-            <p class="hero-text">
-                肩こり・腰痛・頭痛など、慢性的なお悩みに。<br>
-                一人一人の体に向き合う、丁寧な施術を提供します。
-        </p>
-            <div class="hero-btns">
-                <a class="btn-primary" href="#">無料相談はこちら</a>
-                <a class="btn-secondary" href="#">施術メニューを見る</a>
+            <p class="hero-label">Web Creator</p>
+            <h1 class="hero-title">tora2006</h1>
+            <p class="hero-text">HTML / CSS でランディングページを制作しています。<br>シンプルで伝わるWebサイトを目指しています。</p>
+            <a href="#works" class="hero-btn">実績を見る</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-inner">
+            <span class="section-label">About</span>
+            <h2 class="section-title">ABOUT ME</h2>
+            <p class="about-text">はじめまして、tora2006です。<br>HTML / CSS を中心にWeb制作を学習中。<br>使いやすく、見やすいランディングページの制作が得意です。</p>
+            <div class="skills">
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">レスポンシブ対応</span>
+                <span class="skill-tag">LP制作</span>
             </div>
         </div>
     </section>
 
-    <section class="symptoms">
-        <span class="section-label">お悩み</span>
-        <h2 class="section-title">こんな症状ありませんか？</h2>
-        <p class="section-text">多くの方が慢性的な痛みを抱えたまま日常を送っています。</p>
+    <section class="works" id="works">
+        <div class="works-inner">
+            <span class="section-label">Works</span>
+            <h2 class="section-title">WORKS</h2>
+            <p class="section-text">制作したランディングページです。</p>
 
-        <div class="symptom-grid">
-          <span class="symptom-item">😣　肩こり・首こり</span>
-            <span class="symptom-item">😖　腰痛・ぎっくり腰</span>
-            <span class="symptom-item">🤕　頭痛・偏頭痛</span>
-            <span class="symptom-item">😴　疲れがとれない</span>
-            <span class="symptom-item">🦵  膝・股関節の痛み</span>
-            <span class="symptom-item">💻　デスクワークの疲れ</span>
-            <span class="symptom-item">😰　自律神経の乱れ</span>
-            <span class="symptom-item">🏃　スポーツによる痛み</span>
-        </div>
+            <div class="works-grid">
 
-        <div class="symptom-note">
-            <strong>その痛み、放置していませんか？</strong><br><br>
-            慢性的な痛みは、放っておくと悪化することがあります。<br>
-            ミリオラーレでは根本的にアプローチし、<br>
-            再発しにくい体作りをサポートします。
-        </div>
-    </section>
+                <div class="work-card">
+                    <div class="work-thumb cafe">
+                        <span class="work-thumb-text">Cafe LP</span>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">カフェ紹介LP「シエスタ」</h3>
+                        <p class="work-desc">カフェのランディングページ。ナビ・ヒーロー・メニュー・アクセスを含む全セクション制作。</p>
+                        <div class="work-tags">
+                            <span class="work-tag">HTML</span>
+                            <span class="work-tag">CSS</span>
+                        </div>
+                        <a href="22index.html" target="_blank" class="work-btn">サイトを見る</a>
+                    </div>
+                </div>
 
-    <section class="treatment">
-        <span class="section-label">施術メニュー</span>
-        <h2 class="section-title">MENU</h2>
-        <p class="section-text">お体の状態に合わせた施術をご提案します。</p>
+                <div class="work-card">
+                    <div class="work-thumb seitai">
+                        <span class="work-thumb-text">Seitai LP</span>
+                    </div>
+                    <div class="work-info">
+                        <h3 class="work-title">整体院LP「ミリオラーレ」</h3>
+                        <p class="work-desc">整体院のランディングページ。お悩み・施術メニュー・FAQ・アクセスなど9セクション制作。</p>
+                        <div class="work-tags">
+                            <span class="work-tag">HTML</span>
+                            <span class="work-tag">CSS</span>
+                        </div>
+                        <a href="migliorare.html" target="_blank" class="work-btn">サイトを見る</a>
+                    </div>
+                </div>
 
-        <div class="treatment-cards">
-
-            <div class="treatment-card">
-                <div class="treatment-icon">🙆</div>
-                <h3 class="treatment-name">全体調整</h3>
-                <p class="treatment-desc">全体のバランスを整え、骨格・筋肉にアプローチ。慢性的な痛みの根本改善を目指します。</p>
-                <span class="treatment-time">⏱ 60分</span>
-                <p class="treatment-price">￥8,800</p>
             </div>
-
-            <div class="treatment-card">
-                <div class="treatment-icon">💆</div>
-                <h3 class="treatment-name">部分集中ケア</h3>
-                <p class="treatment-desc">肩・腰・首など気になる部位に集中してアプローチ。な痛みの根本改善を目指します。</p>
-                <span class="treatment-time">⏱  30分</span>
-                <p class="treatment-price">￥4,400</p>
-            </div>
-
-        <div class="treatment-card">
-                <div class="treatment-icon">🧘</div>
-                <h3 class="treatment-name">姿勢矯正</h3>
-                <p class="treatment-desc">猫背・骨盤のゆがみを整え正しい姿勢へ。見た目の改善と再発防止を同時にサポートします。</p>
-                <span class="treatment-time">⏱ 45分</span>
-                <p class="treatment-price">￥6,000</p>
-            </div>
-     </div>
-    </section>
-
-    <section class="reasons">
-        <span class="section-label">選ばれる理由</span>
-        <h2 class="section-title">WHY MIGLIORARE</h2>
-        <p class="section-text">多くの方にリピートいただける３つの理由。</p>
-
-        <div class="reason-grid">
-
-            <div class="reason-item">
-                <p class="reason-number">01</p>
-                <h3 class="reason-title">根本原因へのアプローチ</h3>
-                <p class="reason-text">痛みの表面だけでなく、姿勢・骨格・筋肉のバランスから根本的な原因を探り、再発しにくい体作りを目指します。</p>
-            </div>
-
-            <div class="reason-item">
-                <p class="reason-number">02</p>
-                <h3 class="reason-title">一人ひとりに合わせた施術</h3>
-                <p class="reason-text">初回はじっくりカウンセリング。体の丈態・生活習慣・お悩みをしっかり聞いた上で、最適な施術プランをご案内します。</p>
-            </div>
-
-            <div class="reason-item">
-                <p class="reason-number">03</p>
-                <h3 class="reason-title">通いやすい環境</h3>
-                <p class="reason-text">駅から徒歩３分。平日夜20時まで営業。当日予約もOKなので、仕事帰りや急な痛みにも対応できます。</p>
-            </div>
-    
-        </div>
-        
-    </section>
-
-    <section class="flow">
-        <span class="section-label">施術の流れ</span>
-        <h2 class="section-title">FLOW</h2>
-        <p class="section-text">初めての方でも安心してご来院いただけます。</p>
-    
-    <div class="flow-steps">
-
-        <div class="flow-step">
-            <div class="flow-left">
-            <div class="flow-num">1</div>
-            <div class="flow-line"></div>
-        </div>
-        <div class="flow-content">
-            <h3 class="flow-title">ご予約</h3>
-            <p class="flow-text">お電話またはWEBフォームからご予約ください。当日予約もOKです。</p>
-        </div>  
-    </div>
-
-    <div class="flow-step">
-            <div class="flow-left">
-            <div class="flow-num">2</div>
-            <div class="flow-line"></div>
-        </div>
-        <div class="flow-content">
-            <h3 class="flow-title">カウンセリング</h3>
-            <p class="flow-text">お体の状態・お悩みをじっくりヒアリング。初回は約15分ほどお時間をいただきます。</p>
-        </div>  
-    </div>
-
-    <div class="flow-step">
-            <div class="flow-left">
-            <div class="flow-num">3</div>
-            <div class="flow-line"></div>
-        </div>
-        <div class="flow-content">
-            <h3 class="flow-title">施術</h3>
-            <p class="flow-text">カウンセリングをもとに最適な施術を行います。痛みのない優しい施術です</p>
-        </div>  
-    </div>
-
-    <div class="flow-step">
-            <div class="flow-left">
-            <div class="flow-num">4</div>
-            <div class="flow-line"></div>
-        </div>
-        <div class="flow-content">
-            <h3 class="flow-title">アフターケアのご説明</h3>
-            <p class="flow-text">施術後にセルフケアの方法や次回の来院タイミングをご説明します。</p>
-        </div>  
-    </div>
-
-    </div>
-    </section>
-
-    <section class="faq">
-        <span class="section-label">よくある質問</span>
-        <h2 class="section-title">FAQ</h2>
-        <p class="section-text">初めての方からよくいただく質問です。</p>
-
-        <div class="faq-list">
-
-            <div class="faq-item">
-                <p class="faq-q">予約なしでも行っても大丈夫ですか？</p>
-                <p class="faq-a">当日予約はお受けしていますが、事前にお電話またはWebからご予約いただくとスムーズです。</p>
-            </div>
-
-             <div class="faq-item">
-                <p class="faq-q">施術は痛くないですか？</p>
-                <p class="faq-a">強い刺激を与えず、体の状態に合わせた優しい施術を心がけています。痛みが出た場合はすぐにお知らせください。</p>
-            </div>
-
-             <div class="faq-item">
-                <p class="faq-q">何回通えば効果が出ますか？</p>
-                <p class="faq-a">症状や体の状態によって異なりますが、多くの方が３～５回で変化を実感されています。初回カウンセリングで目安をお伝えします。</p>
-            </div>
-
-            
-             <div class="faq-item">
-                <p class="faq-q">子供を連れてでも来院できますか？</p>
-                <p class="faq-a">はい、お子様ずれでもご来院いただけます。ベビーカーでの入店も可能です。お気軽にご相談ください。。</p>
-            </div>
-
         </div>
     </section>
 
-    <section class="access">
-        <span class="section-label">アクセス</span>
-        <h2 class="section-title">ACCESS</h2>
-        <p class="section-text">お気軽ご来院ください。</p>
-
-        <div class="access-grid">
-
-            <div class="access-item">
-                <p class="access-label">ADDRESS</p>
-                <p class="access-text">東京都新◯◯町1-2-3<br>△△ビル2F</p>
-            </div>
-
-            
-            <div class="access-item">
-                <p class="access-label">HOURS</p>
-                <p class="access-text">月～金 10:00-20:00<br>土・日10：00-18:00</p>
-            </div>
-
-            
-            <div class="access-item">
-                <p class="access-label">CLOSED</p>
-                <p class="access-text">毎週木曜日</p>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <p class="footer-text">© 2024 MIGLIORARE ALL Rights Reserved.</p>
+    <footer class="footer">
+        <p class="footer-text">© 2024 tora2006 All Rights Reserved.</p>
     </footer>
 
 </body>
